@@ -13,3 +13,9 @@
 ## Navigation
 - Utilize arrow keys for movement.
 - Use Triangle and Cross buttons to adjust head position.
+
+## Additional info
+
+### Board pinout
+https://github.com/r0oland/ESP32_mini_KiCad_Library  
+https://randomnerdtutorials.com/esp32-pinout-reference-gpios/
