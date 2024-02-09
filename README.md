@@ -5,7 +5,7 @@
 **Motors:** 2x N20 6V 150rpm  
 **Servo:** NG90  
 **Motor driver:** Mini L298N  
-**Battery:** 3xAA batteries with case
+**Battery:** 3xAAA batteries with case
 
 ## Software
 [Dabble Bluetooth controller](https://ai.thestempedia.com/docs/dabble-app/gamepad-module/)
