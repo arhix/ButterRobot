@@ -2,15 +2,16 @@
 
 #define CUSTOM_SETTINGS
 #define INCLUDE_GAMEPAD_MODULE
-#include <DabbleESP32.h>
-#include <Servo.h>
-#include <Every.h>
 
-//Right motor
+#include <DabbleESP32.h>
+#include <Every.h>
+#include <Servo.h>
+
+// Right motor
 #define IN1 21
 #define IN2 22
 
-//Left motor
+// Left motor
 #define IN3 16
 #define IN4 17
 
@@ -32,7 +33,7 @@ void setup() {
   Serial.begin(115200);
 
   setupMotor();
-  rotateMotor(0,0);
+  rotateMotor(0, 0);
 
   pinMode(SERVO_PIN, OUTPUT);
   servo.attach(SERVO_PIN);
@@ -42,14 +43,14 @@ void setup() {
 
   delay(200);
   Serial.println("Ready");
-  pinMode (2, OUTPUT);
+  pinMode(2, OUTPUT);
 }
 
 void loop() {
   digitalWrite(2, HIGH);
 
-  int rightMotorSpeed=0;
-  int leftMotorSpeed=0;
+  int rightMotorSpeed = 0;
+  int leftMotorSpeed = 0;
 
   Dabble.processInput();
 
@@ -79,7 +80,7 @@ void loop() {
 
   if (servoTimeout()) {
     if (GamePad.isTrianglePressed()) {
-      if(servoPos < 120) {
+      if (servoPos < 120) {
         servoPos += 10;
         servo.write(servoPos);
       }
@@ -87,7 +88,7 @@ void loop() {
     }
 
     if (GamePad.isCrossPressed()) {
-      if(servoPos > 50) {
+      if (servoPos > 50) {
         servoPos -= 10;
         servo.write(servoPos);
       }
@@ -103,18 +104,21 @@ void setupMotor() {
   pinMode(IN4, OUTPUT);
 }
 
-void rotateMotor(int rightSpeed, int leftSpeed)
-{
+void rotateMotor(int rightSpeed, int leftSpeed) {
   leftSpeed = constrain(leftSpeed, -255, 255);
   rightSpeed = constrain(rightSpeed, -255, 255);
 
   float pin1 = 0, pin2 = 0, pin3 = 0, pin4 = 0;
 
-  if(leftSpeed > 0) pin2 = leftSpeed;
-  else pin1 = -1 * leftSpeed;
+  if (leftSpeed > 0)
+    pin2 = leftSpeed;
+  else
+    pin1 = -1 * leftSpeed;
 
-  if(rightSpeed > 0) pin3 = rightSpeed;
-  else pin4 = -1 * rightSpeed;
+  if (rightSpeed > 0)
+    pin3 = rightSpeed;
+  else
+    pin4 = -1 * rightSpeed;
 
   analogWrite(IN1, (int)pin1);
   analogWrite(IN2, (int)pin2);
